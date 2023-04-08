@@ -1,0 +1,8 @@
+{% for entry in entries %}
+{{ entry.addr }}
+	Tunnel-Type = VLAN,
+	Tunnel-Medium-Type = IEEE-802,
+	Tunnel-Private-Group-ID = "{{ entry.vlan }}",
+	Aruba-MPSK-Passphrase = "{{ entry.mpsk }}"
+
+{% endfor %}

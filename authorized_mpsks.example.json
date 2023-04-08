@@ -1,0 +1,8 @@
+[
+    {
+        "_description": "your-device",
+        "addr": "11-22-33-44-55-66",
+        "vlan": 100,
+        "mpsk": "uwuwuwuw"
+    }
+]
