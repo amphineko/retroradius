@@ -1,0 +1,10 @@
+{
+    "CN": "client-{{COMMON_NAME}}@aqua.futa.moe",
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "hosts": [
+        ""
+    ]
+}

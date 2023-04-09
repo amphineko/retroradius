@@ -1,0 +1,22 @@
+{
+    "signing": {
+        "server": {
+            "usages": [
+                "signing",
+                "digital signing",
+                "key encipherment",
+                "server auth"
+            ],
+            "expiry": "365d"
+        },
+        "client": {
+            "usages": [
+                "signing",
+                "digital signing",
+                "key encipherment",
+                "client auth"
+            ],
+            "expiry": "365d"
+        }
+    }
+}

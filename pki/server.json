@@ -1,0 +1,10 @@
+{
+    "CN": "radius-server.aqua.futa.moe",
+    "key": {
+        "algo": "rsa",
+        "size": 4096
+    },
+    "hosts": [
+        "radius-server.aqua.futa.moe"
+    ]
+}

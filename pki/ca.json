@@ -1,0 +1,7 @@
+{
+    "CN": "certificate-authority@aqua.futa.moe",
+    "key": {
+        "algo": "rsa",
+        "size": 4096
+    }
+}
