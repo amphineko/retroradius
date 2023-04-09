@@ -1,3 +1,7 @@
+# retroradius@home
+
+This repository contains the configuration files and automation tools to run FreeRADIUS for my home network.
+
 ## Features
 
 - Aruba MPSK (Multi Pre-Shared Key) authentication
