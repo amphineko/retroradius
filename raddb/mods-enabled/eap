@@ -1,5 +1,5 @@
 eap {
-	default_eap_type = tls
+	default_eap_type = mschapv2
 	timer_expire = 60
 	max_sessions = ${max_requests}
 
@@ -17,18 +17,14 @@ eap {
 
         tls_min_version = "1.2"
         tls_max_version = "1.2"
-
 		
-		# ecdh_curve = "prime256v1"
-		ecdh_curve = ""
+		ecdh_curve = "prime256v1"
 
 		verify {
 		}
 
 		ocsp {
 			enable = no
-			override_cert_url = no
-			url = "http://127.0.0.1/ocsp/"
 		}
 	}
 
@@ -40,14 +36,14 @@ eap {
 		tls = tls-common
 		default_eap_type = mschapv2
 		copy_request_to_tunnel = no
-		virtual_server = "inner-tunnel-ttls"
+		virtual_server = "inner-tunnel"
 	}
 
 	peap {
 		tls = tls-common
 		default_eap_type = mschapv2
 		copy_request_to_tunnel = no
-		virtual_server = "inner-tunnel-peap"
+		virtual_server = "inner-tunnel"
 	}
 	
 	mschapv2 {

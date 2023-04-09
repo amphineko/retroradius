@@ -1,7 +1,7 @@
 server default {
 
 listen {
-	ipaddr = 0.0.0.0
+	ipaddr = *
 	type = auth
 	port = 1812
 }
@@ -9,7 +9,6 @@ listen {
 authorize {
 	filter_username
 	filter_password
-
 	preprocess
 	
 	# authorize mac address
@@ -18,30 +17,36 @@ authorize {
 	if (ok) {
 		accept
 	}
-
-	# authorize by certificate
+	
+	# authorize by certificate and password
+	mschap
+	
 	eap {
 		ok = return
 	}
-
+	
+	authorized_users
+	pap
 }
 
 authenticate {
-	Auth-Type EAP {
-		eap
+	Auth-Type PAP {
+		pap	
 	}
 
 	Auth-Type MS-CHAP {
 		mschap
 	}
+	mschap
 
-	Auth-Type PAP {
-		pap
+	eap
+	Auth-Type EAP {
+		eap
 	}
 }
 
 post-auth {
-	if (control:Auth-Type == "EAP") {
+	if (control:Auth-Type == "EAP" && !reply:Tunnel-Private-Group-ID) {
 		update reply {
 			Tunnel-Private-Group-ID := "100"
 		}

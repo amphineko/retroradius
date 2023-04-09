@@ -1,3 +1,8 @@
+files authorized_users {
+	key = "%{%{Stripped-User-Name}:-%{User-Name}}"
+	filename = ${confdir}/authorized_users
+}
+
 files authorized_mpsks {
 	key = "%{Calling-Station-ID}"
 	filename = ${confdir}/authorized_mpsks

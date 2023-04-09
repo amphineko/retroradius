@@ -1,0 +1,49 @@
+server inner-tunnel {
+
+listen {
+	ipaddr = 127.0.0.1
+	port = 18120
+	type = auth
+}
+
+authorize {
+	filter_username
+	filter_password
+	# filter_inner_identity
+	preprocess
+
+	chap
+	mschap
+
+	suffix
+	update control {
+		# don't proxy inner-tunnel requests
+		&Proxy-To-Realm := LOCAL
+	}
+
+	eap {
+		ok = return
+	}
+
+	authorized_users
+	pap
+}
+
+authenticate {
+	Auth-Type PAP {
+		pap
+	}
+
+	Auth-Type CHAP {
+		chap
+	}
+
+	Auth-Type MS-CHAP {
+		mschap
+	}
+	mschap
+
+	eap
+}
+
+}
