@@ -1,0 +1,51 @@
+server default {
+
+listen {
+	ipaddr = 0.0.0.0
+	type = auth
+	port = 1812
+}
+	
+authorize {
+	filter_username
+	filter_password
+
+	preprocess
+	
+	# authorize mac address
+	rewrite_calling_station_id
+	authorized_mpsks
+	if (ok) {
+		accept
+	}
+
+	# authorize by certificate
+	eap {
+		ok = return
+	}
+
+}
+
+authenticate {
+	Auth-Type EAP {
+		eap
+	}
+
+	Auth-Type MS-CHAP {
+		mschap
+	}
+
+	Auth-Type PAP {
+		pap
+	}
+}
+
+post-auth {
+	if (control:Auth-Type == "EAP") {
+		update reply {
+			Tunnel-Private-Group-ID := "100"
+		}
+	}
+}
+
+}
