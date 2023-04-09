@@ -1,8 +1,0 @@
-FROM docker.io/library/python:3.11-alpine
-
-RUN /usr/local/bin/pip3 install --upgrade click Jinja2
-
-COPY ./compiler.py /compiler.py
-COPY ./template.j2 /template.j2
-
-CMD ["/usr/local/bin/python3", "/compiler.py"]

@@ -1,0 +1,7 @@
+{% for entry in entries %}
+"{{ entry.username }}" NT-Password := "{{ entry.nthash }}"
+	Tunnel-Type = VLAN,
+	Tunnel-Medium-Type = IEEE-802,
+	Tunnel-Private-Group-ID = "{{ entry.vlan }}"
+
+{% endfor %}

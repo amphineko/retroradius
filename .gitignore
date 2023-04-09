@@ -1,3 +1,7 @@
 authorized_mpsks.json
 raddb/authorized_mpsks
+
+authorized_users.json
+raddb/authorized_users
+
 raddb/clients.conf
