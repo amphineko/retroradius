@@ -1,0 +1,19 @@
+services:
+  freeradius:
+    image: docker.io/freeradius/freeradius-server:latest-3.2-alpine
+    command: -X
+    container_name: freeradius
+    environment:
+      - TZ=America/New_York
+    ports:
+      - "1812:1812/udp"
+      - "1813:1813/udp"
+    restart: unless-stopped
+    volumes:
+      - ./pki:/etc/raddb/certs:ro,z
+      - ./raddb/authorized_mpsks:/opt/etc/raddb/authorized_mpsks:ro,z
+      - ./raddb/authorized_users:/opt/etc/raddb/authorized_users:ro,z
+      - ./raddb/clients.conf:/opt/etc/raddb/clients.conf:ro,z
+      - ./raddb/mods-enabled/eap:/opt/etc/raddb/mods-enabled/eap:ro,z
+      - ./raddb/mods-enabled/files:/opt/etc/raddb/mods-enabled/files:ro,z
+      - ./raddb/sites-enabled:/opt/etc/raddb/sites-enabled:ro,z
